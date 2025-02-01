@@ -9,7 +9,7 @@ public @Data class Imovel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
     private String logradouro;
     private String bairro;
     private String cep;
@@ -17,8 +17,8 @@ public @Data class Imovel {
     private int dormitorios;
     private int banheiros;
     private int suites;
-    private int vagas_garagem;
-    private double valor_sugerido;
+    private int vagasGaragem;
+    private double valorAluguelSugerido;
     private String obs;
 
     @ManyToOne

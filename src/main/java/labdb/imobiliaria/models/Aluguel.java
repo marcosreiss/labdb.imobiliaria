@@ -1,4 +1,26 @@
 package labdb.imobiliaria.models;
 
-public class Aluguel {
+import jakarta.persistence.*;
+import lombok.Data;
+import java.util.Date;
+
+@Entity
+@Table(name = "Alugueis")
+public @Data class Aluguel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne
+    private Locacao locacao;
+
+    @Temporal(TemporalType.DATE)
+    private Date dataVencimento;
+
+    private double valorPago;
+
+    @Temporal(TemporalType.DATE)
+    private Date dataPagamento;
+
+    private String obs;
 }
