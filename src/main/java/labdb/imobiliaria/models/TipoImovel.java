@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Entity
 @Table(name = "Tipo_Imovel")
-public @Data class TipoImovel {
+public @Data class TipoImovel implements EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

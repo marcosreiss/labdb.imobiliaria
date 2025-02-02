@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Entity
 @Table(name = "Profissionais")
-public @Data class Profissional {
+public @Data class Profissional implements EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

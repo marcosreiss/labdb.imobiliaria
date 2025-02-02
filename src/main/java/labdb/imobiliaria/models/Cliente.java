@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Clientes")
-public @Data class Cliente {
+public @Data class Cliente implements EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
