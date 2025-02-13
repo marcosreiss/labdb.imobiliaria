@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "Profissionais")
+@Table(name = "profissionais")
 public @Data class Profissional implements EntidadeBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
