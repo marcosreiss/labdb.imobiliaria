@@ -22,8 +22,10 @@ public @Data class Imovel implements EntidadeBase {
     private String obs;
 
     @ManyToOne
+    @JoinColumn(name = "id_tipo_imovel")
     private TipoImovel tipoImovel;
 
     @ManyToOne
+    @JoinColumn(name = "id_proprietario")
     private Cliente cliente;
 }

@@ -15,6 +15,7 @@ public @Data class Locacao implements EntidadeBase {
     private Imovel imovel;
 
     @ManyToOne
+    @JoinColumn(name = "id_inquilino")
     private Cliente inquilino;
 
     private double valorAluguel;
