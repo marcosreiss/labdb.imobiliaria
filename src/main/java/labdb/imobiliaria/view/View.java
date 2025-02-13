@@ -26,16 +26,16 @@ public class View {
     private static final ServicosImovelRepository servicosImovelRepository = new ServicosImovelRepository(em);
 
     // Views
-    private static final AluguelView aluguelView = new AluguelView(aluguelRepository);
-    private static final ClienteView clienteView = new ClienteView(clienteRepository);
-    private static final ProfissionalView profissionalView = new ProfissionalView(profissionalRepository);
-    private static final TipoImovelView tipoImovelView = new TipoImovelView(tipoImovelRepository);
+    private static final AluguelView aluguelView = new AluguelView(aluguelRepository, em);
+    private static final ClienteView clienteView = new ClienteView(clienteRepository, em);
+    private static final ProfissionalView profissionalView = new ProfissionalView(profissionalRepository, em);
+    private static final TipoImovelView tipoImovelView = new TipoImovelView(tipoImovelRepository, em);
     // Imóvel precisa de TipoImovel e Cliente
-    private static final ImovelView imovelView = new ImovelView(imovelRepository, tipoImovelRepository, clienteRepository);
+    private static final ImovelView imovelView = new ImovelView(imovelRepository, tipoImovelRepository, clienteRepository, em);
     // Locação precisa de Imóvel e Cliente
-    private static final LocacaoView locacaoView = new LocacaoView(locacaoRepository, imovelRepository, clienteRepository);
+    private static final LocacaoView locacaoView = new LocacaoView(locacaoRepository, imovelRepository, clienteRepository, em);
     // Serviços de Imóvel precisam de Imóvel e Profissional
-    private static final ServicosImovelView servicosImovelView = new ServicosImovelView(servicosImovelRepository, imovelRepository, profissionalRepository);
+    private static final ServicosImovelView servicosImovelView = new ServicosImovelView(servicosImovelRepository, imovelRepository, profissionalRepository, em);
 
     public static void main(String[] args) {
         while (true) {

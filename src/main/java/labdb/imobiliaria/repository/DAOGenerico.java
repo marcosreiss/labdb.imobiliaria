@@ -27,8 +27,9 @@ class DAOGenerico<T extends EntidadeBase> {
 
     T salvaOuAtualiza(T t) {
         // log, processamento adicional
-        if( Objects.isNull(t.getId()) )
+        if( Objects.isNull(t.getId()) ){
             this.manager.persist(t);
+        }
         else
             t = this.manager.merge(t);
 
