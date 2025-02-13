@@ -1,10 +1,19 @@
 package labdb.imobiliaria.view;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import labdb.imobiliaria.repository.AluguelRepository;
+
 import java.util.Scanner;
 
 public class View {
 
     private static final Scanner scanner = new Scanner(System.in);
+    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("imobiliariaPU");
+    private static EntityManager em = emf.createEntityManager();
+    private static AluguelRepository aluguelRepository = new AluguelRepository(em);
+    private static AluguelView aluguelView = new AluguelView(aluguelRepository);
 
     public static void main(String[] args) {
         while (true) {
@@ -32,6 +41,8 @@ public class View {
                 case 7: menuTipoImovel(); break;
                 case 0:
                     System.out.println("Saindo...");
+                    em.close();
+                    emf.close();
                     return;
                 default:
                     System.out.println("Opção inválida!");
@@ -40,8 +51,28 @@ public class View {
     }
 
     private static void menuAluguel() {
-        System.out.println("\n### Menu Aluguel ###");
-        menuCrud();
+        while (true) {
+            System.out.println("\n### Menu Aluguel ###");
+            System.out.println("1 - Criar");
+            System.out.println("2 - Ler");
+            System.out.println("3 - Atualizar");
+            System.out.println("4 - Remover");
+            System.out.println("0 - Voltar");
+            System.out.print("Escolha uma opção: ");
+
+            int opcao = scanner.nextInt();
+            scanner.nextLine(); // Consumir a quebra de linha
+
+            switch (opcao) {
+                case 1: aluguelView.criarAluguel(); break;
+                case 2: aluguelView.listarAlugueis(); break;
+                case 3: aluguelView.atualizarAluguel(); break;
+                case 4: aluguelView.removerAluguel(); break;
+                case 0: return;
+                default:
+                    System.out.println("Opção inválida!");
+            }
+        }
     }
 
     private static void menuCliente() {
